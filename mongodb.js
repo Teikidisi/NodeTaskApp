@@ -1,17 +1,20 @@
+// para correr usar /Users/Rodrigo/mongodb/bin/mongod.exe --dbpath=/Users/Rodrigo/mongodb-data
+
 //CRUD create read update delete
+
 // const mongodb = require('mongodb')
 // const MongoClient = mongodb.MongoClient //Cliente para conectarse y manipular la DB
 // const ObjectId = mongodb.ObjectId
 const { MongoClient, ObjectId } = require('mongodb')
 const { count } = require('yargs')
 
-const connectionURL = 'mongodb://127.0.0.1:27017' //puerto en el que se encuentra la DB
+// const connectionURL = 'mongodb://127.0.0.1:27017' //puerto en el que se encuentra la DB
 const databaseName = 'task-manager'//DB que vamos a modificar
 // const id = new ObjectId()
 // console.log(id)
 // console.log(id.getTimestamp())
 
-MongoClient.connect(connectionURL, {useNewUrlParser: true}, (error, client) => {//conectarse a la base de datos, usa callback
+MongoClient.connect(process.env.MONGODB_URL, {useNewUrlParser: true}, (error, client) => {//conectarse a la base de datos, usa callback
     if (error) {
         return console.log('Unable to connect to  database')
     }
